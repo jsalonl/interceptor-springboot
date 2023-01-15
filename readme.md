@@ -55,10 +55,25 @@ Custom interceptor to obtain a detailed log of the application's requests and re
 ## Outputs and screenshots
 
 An example of output.
-```json
-LOG{"method":"DELETE","ip":"127.0.0.1","path":"/interceptor/v1/test","parametersIn":{},"parametersOut":{"code":"400","message":"Missing parameter: id"},"codeResponse":400,"timeResponseService":"69 ms"}
+```
+LOG{
+	"method":"DELETE",
+	"ip":"127.0.0.1",
+	"path":"/interceptor/v1/test",
+	"parametersIn":{},
+	"parametersOut":
+		{
+			"code":"400","message":"Missing parameter: id"
+		},
+	"codeResponse":400,
+	"timeResponseService":"69 ms"
+}
 ```
 
 ## TODO
 
 * Handle headers validation and trace
+
+## Do you want to support me?
+<br>
+<a href="https://www.buymeacoffee.com/JoanSalomon" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-red.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
