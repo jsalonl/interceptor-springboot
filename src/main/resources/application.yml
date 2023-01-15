@@ -1,0 +1,10 @@
+server:
+  port: ${app_port:8010}
+  servlet:
+    context-path: /interceptor/v1
+
+spring:
+  application:
+    name: Interceptor
+    interceptor:
+      enabled: ${interceptor-enabled:true}
