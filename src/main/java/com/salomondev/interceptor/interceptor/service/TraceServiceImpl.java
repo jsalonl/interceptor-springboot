@@ -2,8 +2,7 @@ package com.salomondev.interceptor.interceptor.service;
 
 import com.salomondev.interceptor.interceptor.dto.LoggerDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,9 +12,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Service
+@Slf4j
 public class TraceServiceImpl implements TraceService {
-
-    Logger logger = LoggerFactory.getLogger("LOG Interceptor");
 
     ObjectMapper om = new ObjectMapper();
 
@@ -23,8 +21,9 @@ public class TraceServiceImpl implements TraceService {
 
     /**
      * Register the body of the response
-     * @author Joan Nieto
+     *
      * @param body Object
+     * @author Joan Nieto
      */
     @Override
     public void registerBody(Object body) {
@@ -33,20 +32,22 @@ public class TraceServiceImpl implements TraceService {
 
     /**
      * Register the body of the request
-     * @author Joan Nieto
+     *
      * @param body Object
+     * @author Joan Nieto
      */
     @Override
     public void registerBodyRequest(Object body) {
-        Map<String, Object> map = om.convertValue(body, Map.class);
-        logger.info("Body Request: {}", map);
+        Map<String, Object> map = new HashMap<>();
+        map.put("body", body);
         loggerDto.setParametersIn(map);
     }
 
     /**
      * Register the initial time of the request and the parameters of the request
-     * @author Joan Nieto
+     *
      * @param request HttpServletRequest
+     * @author Joan Nieto
      */
     @Override
     public void registerInitTime(HttpServletRequest request) {
@@ -59,9 +60,10 @@ public class TraceServiceImpl implements TraceService {
 
     /**
      * Register the trace of the request
-     * @author Joan Nieto
-     * @param request HttpServletRequest
+     *
+     * @param request  HttpServletRequest
      * @param response HttpServletResponse
+     * @author Joan Nieto
      */
     @Override
     public void registerTrace(HttpServletRequest request, HttpServletResponse response) {
@@ -73,23 +75,26 @@ public class TraceServiceImpl implements TraceService {
         loggerDto.setTimeResponseService(timeResponse);
         try {
             String message = om.writeValueAsString(loggerDto);
-            logger.info("LOG{}", message);
+            log.info("LOG{}", message);
         } catch (Exception e) {
-            logger.info(e.getMessage());
+            log.info(e.getMessage());
         }
     }
 
     /**
      * Format the parameters of the request to a Map type
-     * @author Joan Nieto
+     *
      * @param requestParameters Map<String, String[]>
      * @return Map<String, Object>
+     * @author Joan Nieto
      */
     private Map<String, Object> formatParameters(Map<String, String[]> requestParameters) {
         Map<String, Object> parameters = new HashMap<>();
+        Map<String, Object> parametersIn = new HashMap<>();
         for (Map.Entry<String, String[]> entry : requestParameters.entrySet()) {
             parameters.put(entry.getKey(), entry.getValue()[0]);
         }
-        return parameters;
+        parametersIn.put("query", parameters);
+        return parametersIn;
     }
 }

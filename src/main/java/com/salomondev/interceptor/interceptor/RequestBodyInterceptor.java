@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.servlet.mvc.method.annotation.RequestBodyAdvice;
 
-import java.io.IOException;
 import java.lang.reflect.Type;
 
 @ControllerAdvice
@@ -20,11 +19,12 @@ public class RequestBodyInterceptor implements RequestBodyAdvice {
 
     /**
      * Supports is called before the controller is called
-     * @author Joan Nieto
+     *
      * @param methodParameter MethodParameter
-     * @param targetType Type
-     * @param converterType Class<? extends HttpMessageConverter<?>>
+     * @param targetType      Type
+     * @param converterType   Class<? extends HttpMessageConverter<?>>
      * @return boolean
+     * @author Joan Nieto
      */
     @Override
     public boolean supports(MethodParameter methodParameter, Type targetType, Class<? extends HttpMessageConverter<?>> converterType) {
@@ -33,12 +33,13 @@ public class RequestBodyInterceptor implements RequestBodyAdvice {
 
     /**
      * Handle empty body
-     * @author Joan Nieto
-     * @param inputMessage HttpInputMessage
-     * @param parameter MethodParameter
-     * @param targetType Type
+     *
+     * @param inputMessage  HttpInputMessage
+     * @param parameter     MethodParameter
+     * @param targetType    Type
      * @param converterType Class<? extends HttpMessageConverter<?>>
      * @return HttpInputMessage
+     * @author Joan Nieto
      */
     @Override
     public Object handleEmptyBody(Object body, HttpInputMessage inputMessage, MethodParameter parameter, Type targetType, Class<? extends HttpMessageConverter<?>> converterType) {
@@ -47,28 +48,29 @@ public class RequestBodyInterceptor implements RequestBodyAdvice {
 
     /**
      * Before body is read
-     * @author Joan Nieto
-     * @param inputMessage HttpInputMessage
-     * @param parameter MethodParameter
-     * @param targetType Type
+     *
+     * @param inputMessage  HttpInputMessage
+     * @param parameter     MethodParameter
+     * @param targetType    Type
      * @param converterType Class<? extends HttpMessageConverter<?>>
      * @return HttpInputMessage
-     * @throws IOException IOException
+     * @author Joan Nieto
      */
     @Override
-    public HttpInputMessage beforeBodyRead(HttpInputMessage inputMessage, MethodParameter parameter, Type targetType, Class<? extends HttpMessageConverter<?>> converterType) throws IOException {
+    public HttpInputMessage beforeBodyRead(HttpInputMessage inputMessage, MethodParameter parameter, Type targetType, Class<? extends HttpMessageConverter<?>> converterType){
         return inputMessage;
     }
 
     /**
      * After body is read
-     * @author Joan Nieto
-     * @param body Object
-     * @param inputMessage HttpInputMessage
-     * @param parameter MethodParameter
-     * @param targetType Type
+     *
+     * @param body          Object
+     * @param inputMessage  HttpInputMessage
+     * @param parameter     MethodParameter
+     * @param targetType    Type
      * @param converterType Class<? extends HttpMessageConverter<?>>
      * @return Object
+     * @author Joan Nieto
      */
     @Override
     public Object afterBodyRead(Object body, HttpInputMessage inputMessage, MethodParameter parameter, Type targetType, Class<? extends HttpMessageConverter<?>> converterType) {

@@ -18,10 +18,11 @@ public class ResponseBodyInterceptor implements ResponseBodyAdvice<Object> {
 
     /**
      * Supports is called before the controller is called
-     * @author Joan Nieto
-     * @param returnType MethodParameter
+     *
+     * @param returnType    MethodParameter
      * @param converterType Class<? extends HttpMessageConverter<?>>
      * @return boolean
+     * @author Joan Nieto
      */
     @Override
     public boolean supports(MethodParameter returnType, Class<? extends HttpMessageConverter<?>> converterType) {
@@ -30,14 +31,15 @@ public class ResponseBodyInterceptor implements ResponseBodyAdvice<Object> {
 
     /**
      * Before body is written
-     * @author Joan Nieto
-     * @param body Object
-     * @param returnType MethodParameter
-     * @param selectedContentType MediaType
+     *
+     * @param body                  Object
+     * @param returnType            MethodParameter
+     * @param selectedContentType   MediaType
      * @param selectedConverterType Class<? extends HttpMessageConverter<?>>
-     * @param request ServerHttpRequest
-     * @param response ServerHttpResponse
+     * @param request               ServerHttpRequest
+     * @param response              ServerHttpResponse
      * @return Object
+     * @author Joan Nieto
      */
     @Override
     public Object beforeBodyWrite(Object body, MethodParameter returnType, MediaType selectedContentType, Class<? extends HttpMessageConverter<?>> selectedConverterType, ServerHttpRequest request, ServerHttpResponse response) {

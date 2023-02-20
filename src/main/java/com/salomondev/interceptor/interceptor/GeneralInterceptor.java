@@ -16,31 +16,31 @@ public class GeneralInterceptor implements HandlerInterceptor {
 
     /**
      * PreHandle is called before the controller is called
-     * @author Joan Nieto
-     * @param request HttpServletRequest
+     *
+     * @param request  HttpServletRequest
      * @param response HttpServletResponse
-     * @param handler Object
+     * @param handler  Object
      * @return boolean
-     * @throws Exception Exception
+     * @author Joan Nieto
      */
     @Override
-    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
         traceService.registerInitTime(request);
         return true;
     }
 
     /**
      * PostHandle is called after the controller is called
-     * @author Joan Nieto
-     * @param request HttpServletRequest
+     *
+     * @param request  HttpServletRequest
      * @param response HttpServletResponse
-     * @param handler Object
-     * @param ex Exception
-     * @throws Exception Exception
+     * @param handler  Object
+     * @param ex       Exception
+     * @author Joan Nieto
      */
     @Override
-    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
-        traceService.registerTrace(request,response);
+    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) {
+        traceService.registerTrace(request, response);
     }
 
 

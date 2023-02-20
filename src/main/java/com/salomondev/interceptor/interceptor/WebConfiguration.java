@@ -16,8 +16,9 @@ public class WebConfiguration implements WebMvcConfigurer {
 
     /**
      * Add interceptors
-     * @author Joan Nieto
+     *
      * @param registry InterceptorRegistry
+     * @author Joan Nieto
      */
     @Override
     public void addInterceptors(org.springframework.web.servlet.config.annotation.InterceptorRegistry registry) {
