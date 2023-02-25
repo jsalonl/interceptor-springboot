@@ -15,14 +15,14 @@ Custom interceptor to obtain a detailed log of the application's requests and re
 
 ```
 .
-├── dto                     # DTO example (Request and Response)
-├── exception				# Exception Handler
-│   ├── controller          # Rest Advice Controller
+├── dto                    	# DTO example (Request and Response)
+├── exception			# Exception Handler
+│   ├── controller          	# Rest Advice Controller
 │   ├── dto         		# DTO response for exception handling
 ├── interceptor         	# Interceptor config
 │   ├── dto         		# Logger DTO
 │   ├── service         	# Service to log trace
-├── web						# Rest Controller
+├── web				# Rest Controller
 ```
 
 ## Parameters to trace
