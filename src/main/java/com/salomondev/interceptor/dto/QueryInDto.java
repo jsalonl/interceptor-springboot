@@ -1,12 +1,12 @@
 package com.salomondev.interceptor.dto;
 
-import lombok.*;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.AllArgsConstructor;
 
 @Builder
 @Getter
-@Setter
 @AllArgsConstructor
-@NoArgsConstructor
 public class QueryInDto {
     private Long id;
     private String name;

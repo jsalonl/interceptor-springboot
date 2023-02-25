@@ -83,6 +83,12 @@ class TraceServiceImplTest {
         traceService.registerBody(body);
         traceService.registerTrace(request, response);
         assertNotNull(loggerDto.getParametersIn());
+        assertNotNull(loggerDto.getCodeResponse());
+        assertNotNull(loggerDto.getMethod());
+        assertNotNull(loggerDto.getIp());
+        assertNotNull(loggerDto.getPath());
+        assertNotNull(loggerDto.getTimeConsumeService());
+        assertNotNull(loggerDto.getTimeResponseService());
         verify(om).writeValueAsString(traceService.loggerDto);
     }
 

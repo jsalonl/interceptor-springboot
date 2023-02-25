@@ -1,7 +1,12 @@
 package com.salomondev.interceptor.interceptor.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.*;
+
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 
 import java.util.Map;
 

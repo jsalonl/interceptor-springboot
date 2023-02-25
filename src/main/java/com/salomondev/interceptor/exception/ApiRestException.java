@@ -1,6 +1,7 @@
 package com.salomondev.interceptor.exception;
 
-import lombok.*;
+import lombok.Getter;
+import lombok.AllArgsConstructor;
 
 @Getter
 @AllArgsConstructor

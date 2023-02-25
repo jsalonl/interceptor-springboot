@@ -11,7 +11,7 @@ public class InterceptorController {
 
     @GetMapping(value = "/test")
     @ResponseStatus(value = HttpStatus.OK)
-    public ResponseDto test() {
+    public ResponseDto testGet() {
         return ResponseDto.builder().code("200").message("This is GET request").build();
     }
 
